@@ -44,26 +44,6 @@ set clipboard=unnamed
 filetype indent on
 filetype plugin indent on
 
-"load partial
-nnoremap <silent> <F7> :call EventInit()<CR>
-function EventInit()
-    execute '1s/.*/<?php/'
-    call append(1, "require_once(__DIR__ . '/init.php');")
-    call append(2, "?><!DOCTYPE html>")
-    let sline = search("<link")
-    call append(sline - 1, "<?= $view->partial('fbmeta.phtml', $view) ?>")
-    let titletag = search('<title>')
-    execute titletag . 's/\>.*\</><?= $eventTitle ?><\/'
-
-    let sline = search("main.js")
-    call append(sline, "<?= $view->partial('head.phtml', $view) ?>")
-    let sline = search("<body")
-    call append(sline, "<?= $view->partial('fbroot.phtml', $view) ?>")
-    call append(sline + 1, "<?= $view->partial('header.phtml', $view) ?>")
-    let sline = search("</body>")
-    call append(sline - 1, "<?= $view->partial('ga.phtml', $view) ?>")
-endfunction
-
 "set time
 nnoremap <silent> <F2> :call SetTime()<CR>
 function SetTime()
