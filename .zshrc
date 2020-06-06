@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="maran"
 
 # load our own completion functions
-fpath=(~/.zsh/completion $fpath)
+fpath=(~/.oh-my-zsh/completion $fpath)
 
 # completion
 autoload -U compinit
@@ -82,5 +82,15 @@ HOST=$(hostname)
 # Export OSTYPE
 export OSTYPE=`uname`
 
+# vim
+alias v="vim"
+
 source $ZSH/oh-my-zsh.sh
-. ~/z.sh
+
+# export nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# export PATH
+export PATH=~/.config/composer/vendor/bin:$PATH
